@@ -1,0 +1,23 @@
+name: "resnet18"
+platform: "onnxruntime_onnx"
+max_batch_size: 1   # allow batching (batch dimension N)
+
+input [
+  {
+    name: "input"
+    data_type: TYPE_FP32
+    dims: [ 3, 224, 224 ]
+  }
+]
+
+output [
+  {
+    name: "output"
+    data_type: TYPE_FP32
+    dims: [ 1000 ]
+  }
+]
+
+instance_group [
+  { kind: KIND_CPU, count: 1 }
+]
